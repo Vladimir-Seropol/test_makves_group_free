@@ -20,7 +20,6 @@ const rawData = [
   { name: "Page G", uv: 3490, pv: 4300 },
 ];
 
-
 function calculateZScores(data, key) {
   const values = data.map((d) => d[key]);
   const mean = values.reduce((a, b) => a + b, 0) / values.length;
@@ -33,7 +32,6 @@ function calculateZScores(data, key) {
     [`${key}Z`]: std === 0 ? 0 : (d[key] - mean) / std,
   }));
 }
-
 
 function getSegments(data, key, defaultColor) {
   const segments = [];
@@ -78,8 +76,6 @@ export default function ZScoreChart() {
         <XAxis dataKey="name" />
         <YAxis />
         <Tooltip />
-
-       
         <Legend />
 
        
@@ -102,7 +98,7 @@ export default function ZScoreChart() {
             dataKey="pv"
             stroke={seg.stroke}
             dot={{ stroke: seg.stroke, fill: seg.stroke }}
-            isAnimationActive={false}
+            isAnimationActive={true}
             legendType="none"
           />
         ))}
@@ -115,7 +111,7 @@ export default function ZScoreChart() {
             dataKey="uv"
             stroke={seg.stroke}
             dot={{ stroke: seg.stroke, fill: seg.stroke }}
-            isAnimationActive={false}
+            isAnimationActive={true}
             legendType="none"
           />
         ))}
